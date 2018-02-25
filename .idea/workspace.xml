@@ -19,14 +19,26 @@
       <file leaf-file-name="DNA_sequence.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DNA_sequence.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="120">
+              <caret line="8" column="109" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="109" />
+              <folding>
+                <element signature="n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>d3</find>
+      <find>console</find>
+      <find>chart</find>
+      <find>cons</find>
+      <find>opacity</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,6 +55,9 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="33" />
@@ -73,6 +88,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -89,6 +105,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="51ef7c94-ea76-4b48-b09c-a861d2d5960b" name="Default" comment="" />
@@ -97,12 +116,12 @@
       <option name="presentableId" value="Default" />
       <updated>1519455850757</updated>
       <workItem from="1519455852921" duration="134000" />
-      <workItem from="1519457220025" duration="1044000" />
+      <workItem from="1519457220025" duration="22824000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1178000" />
+    <option name="totallyTimeSpent" value="22958000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="33" y="23" width="1336" height="800" extended-state="0" />
@@ -139,9 +158,12 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/DNA_sequence.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="30" />
-          <folding />
+        <state relative-caret-position="120">
+          <caret line="8" column="109" lean-forward="false" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="109" />
+          <folding>
+            <element signature="n#style#0;n#h2#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

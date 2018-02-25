@@ -3,10 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <title>DNA sequence</title>
-
-
+    <script src='https://cdn.rawgit.com/nicgirault/circosJS/v2/dist/circos.js'></script>
 </head>
 <body>
+    <h2 style = 'text-align: center'>This is a data visualization tool for DNA sequence and relating protein.</h2>
+    <div>
+        <div id = "char">
+            <svg id='chart'></svg>
+        </div>
+
+        <svg id='chart2'></svg>
+    </div>
+
+    <div class = "hover"  style = 'position: absolute; left: 0; top:0; height: 6px; width: 10px;  visibility: hidden' >
+        <div id = "inner"></div>
+    </div>
+
+    <script>
+        function makeid() {
+            var text = "";
+            var possible = "atcg";
+            var length = Math.random()*2000
+            for (var i = 0; i < length; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            return text;
+        }
+
+        //console.log(makeid());
+        arr = {'TTT': 'Phe',
+            'TTC':'Phe',
+            'TTA':'Leu',
+            'TTG':'Leu',
+            'CTT':'Leu',
+            'CTC':'Leu',
+            'CTA':'Leu',
+            'CTG':'Leu',
+            'ATT':'Ile',
+            'ATC':"Ile",
+            'ATA':'Ile',
+            'ATG':'Met',
+            'GTT':'Val',
+            'GTC':'Val',
+            'GTA':'Val',
+            'GTG':'Val',
+            'TCT':'Ser',
+            'TCC':'Ser',
+            'TCA':'Ser',
+            'TCG':'Ser',
+            'CCT':'Pro',
+            'CCC':'Pro',
+            'CCA':'Pro',
+            'CCG':'Pro',
+            'ACT':'Thr',
+            'ACC':'Thr',
+            'ACA':'Thr',
+            'ACG':'Thr',
+            'GCT':'Ala',
+            'GCC':'Ala',
+            'GCA':'Ala',
+            'GCG':'Ala',
+            'TAT':'Tyr',
+            'TAC':'Tyr',
+            'TAA':'Stop',
+            'TAG':'Stop',
+            'CAT':'His',
+            'CAC':'His',
+            'CAA':'Gln',
+            'CAG':'Gln',
+            'AAT':'Asn',
+            'AAC':'Asn',
+            'AAA':'Lys',
+            'AAG':'Lys',
+            'GAT':'Asp',
+            'GAC':'Asp',
+            'GAA':'Glu',
+            'GAG':'Glu',
+            'TGT':'Cys',
+            'TGC':'Cys',
+            'TGA':'Stop',
+            'TGG':'Trp',
+            'CGT':'Arg',
+            'CGC':"Arg",
+            'CGA':'Arg',
+            'CGG':'Arg',
+            'AGT':'Ser',
+            'AGC':'Ser',
+            'AGA':'Arg',
+            'AGG':'Arg',
+            'GGT':'Gly',
+            'GGC':'Gly',
+            'GGA':'Gly',
+            'GGG':'Gly'
+        };
+
+        var str = makeid();
+        var str = str.toUpperCase();
+        ret = []
+        for(var i = 0; i < str.length/3-1; i++){
+            substr = str.substring(i*3,(i+1)*3);
+            ret.push(arr[substr]);
+        }
+       // console.log(ret)
+        var hardCodedProtein=[{len:10, color: "#5687d1", id: "BSAI", label: "BSAI"},{len:0.5, color: "white", id: "trash", label: "trash"},{len:0.5, color: "#741d1", id: "START", label: "START"},{len:0.1, color: "white", id: "trash1", label: "trash1"}]
+        var mycircos2 = new Circos({
+            container: '#chart2',
+            width: 500,
+            height: 500
+        });
+        var configuration2 = {
+            innerRadius: 200,
+            outerRadius: 210,
+            cornerRadius: 0,
+            gap: 30, // in radian
+            labels: {
+                display: true,
+                position: 'center',
+                size: '20px',
+                color: '#465000',
+                radialOffset: 50
+            },
+            ticks: {
+                display: false,
+                color: 'grey',
+                spacing: 10000000,
+                labels: true,
+                labelSpacing:10,
+                labelSuffix: 'Mb',
+                labelDenominator: 1000000,
+                labelDisplay0: true,
+                labelSize: '10px',
+                labelColor: '#000000',
+                labelFont: 'default',
+                majorSpacing: 5,
+                size: {
+                    minor: 2,
+                    major: 5
+                }
+            },
+            events: {
+            }
+        };
+        mycircos2.layout(hardCodedProtein, configuration2)
+                .render();
+
+
+        var mycircos = new Circos({
+            container: '#chart',
+            width: 1000,
+            height: 1000
+        });
+        // here should be your code
+        var colors = {
+            "Phe": "#5687d1",
+            "Leu": "#7b615c",
+            "Ile": "#de783b",
+            "Met": "#6ab975",
+            "Val": "#a173d1",
+            "Ser": "#bbbbbb",
+            "Pro": "#8bbbba",
+            "Thr": "#3bbbba",
+            "Ala": "#2b74ba",
+            "Tyr": "#dbbbba",
+            "Stop": "#dbb435",
+            'His': '#d12435',
+            'Gln':'#d14435',
+            "Asn":'#144435',
+            'Lys': '#3d4435',
+            'Asp': '#6d4435',
+            'Glu': '#9d4435',
+            'Cys': '#6d4435',
+            'Trp':'#7d1435',
+            'Arg': '#5d1435',
+            'Gly':'#4d1435'
+
+        };
+
+        data = []
+        for(var i = 0; i < ret.length; i++){
+            data.push({len:5, color: colors[ret[i]], id: ret[i], label: ret[i]})
+        }
+        var configuration = {
+            innerRadius: 290,
+            outerRadius: 300,
+            cornerRadius: 0,
+            gap: 0.0, // in radian
+            labels: {
+                display: false,
+                position: 'center',
+                size: '14px',
+                color: '#000000',
+                radialOffset: 20
+            },
+            ticks: {
+                display: false,
+                color: 'grey',
+                spacing: 10000000,
+                labels: true,
+                labelSpacing:10,
+                labelSuffix: 'Mb',
+                labelDenominator: 1000000,
+                labelDisplay0: true,
+                labelSize: '10px',
+                labelColor: '#000000',
+                labelFont: 'default',
+                majorSpacing: 5,
+                size: {
+                    minor: 2,
+                    major: 5
+                }
+            },
+            events: {
+                    'mouseover': function (datum, index, nodes, event) {
+                        window.alert(datum)
+                    }
+            }
+        };
+
+        //        datas = data.map(function (d) {
+//            console.log(d)
+//            return{
+//                block_id: d.id,
+//                value: d.value
+//            }
+//        })
+
+//        rets = ret.map(function (d) {
+//            return {
+//                name: d
+//            }
+//        })
+        mycircos.layout(data, configuration)
+//            .highlight('cytobands', data, {
+//                opacity: 0.3,
+//                tooltipContent: function (d) {
+//                    return d.source.id
+//                }
+//            })
+
+        mycircos.render();
+
+        function hover(event){
+            console.log(event);
+            var id = document.getElementById('inner')
+            //console.log(id)
+
+            var outer = document.getElementsByClassName('hover')[0]
+            id.style.visibility= 'visible';
+            id.style.position= "relative";
+            id.style.left= event.screenX+ 'px';
+            id.style.top= event.screenY+'px';
+            id.style.fontSize = 20+'px';
+            id.style.color= 'black';
+            id.style.opacity= 0.5;
+          //  console.log(id.style)
+            id.innerHTML = event.fromElement.id;
+
+//            event.fromElement.innerHTML= event.fromElement.id
+        }
+
+
+                parents = document.getElementsByClassName("cs-layout")
+               // console.log(parents[0].childNodes)
+                for (var i = 0; i < parents[0].childNodes.length; i++) {
+                   parents[0].childNodes[i].onmouseover = hover
+                }
+
+    </script>
 
     <script>
         function makeid() {
@@ -15,17 +277,34 @@
             var length = 2000+Math.random()*1000
             for (var i = 0; i < length; i++)
                 text += possible.charAt(Math.floor(Math.random() * possible.length));
-
             return text;
         }
 
-        console.log(makeid());
+       // console.log(makeid());
+
+
     </script>
 
     <style>
+        /*div{height: 100%; width: 100%;}*/
+        svg{height: 1000px; width: 100%;}
+        #chart{
+            position: absolute;
+            left: 30%;
+            top: 30%;
+            /*transform: translate(-50%, -50%);*/
 
+        }
+
+        #chart2{
+            position: absolute;
+            left: 44%;
+            top: 67%;
+            /*transform: translate(-50%, -50%);*/
+
+
+        }
     </style>
-
 
 </body>
 </html>
